@@ -6,7 +6,8 @@ import {setSearchTerm,loadTiles} from '../actioncreators/actionCreators.js';
 import {getData} from '../dataapi/api.js';
 
 const mapStateToProps = state => ({
-	searchTerm : state.searchTerm
+	searchTerm : state.searchTerm,
+	shows: state.shows
 })
 
 const mapDispatchToProps = (dispatch) => ({

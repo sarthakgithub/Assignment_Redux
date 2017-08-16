@@ -3,7 +3,8 @@ const webpack = require('webpack');
 
 module.exports = {
 	context: __dirname,
-	entry: './src/components/index.js',
+	entry: ['babel-polyfill', './src/components/index.js'],
+
 	devtool: 'inline-source-map',
 	output: {
 		path : path.resolve(__dirname,'public'),

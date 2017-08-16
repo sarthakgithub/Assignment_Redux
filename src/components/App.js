@@ -5,7 +5,9 @@ import {BrowserRouter as Router, Route, Link, Switch, Redirect, browserHistory} 
 import {provider} from 'react-redux';
 //import TileList from './tileList.js';
 import HomeContainer from '../containers/homeContainer.js';
-// import Search from './search.js';
+import searchContainer from '../containers/searchContainer.js';
+import tileFormContainer from '../containers/tileFormContainer.js';
+//import Search from './search.js';
 // import TileForm from './tileForm.js';
 
 
@@ -21,7 +23,8 @@ class App extends React.Component{
                     <Switch>
                         <Redirect exact from="/" to="/home"/>
                         <Route  path="/home" component={HomeContainer}/>
-                        
+                        <Route  path="/search/:id" component={searchContainer}/>
+                        <Route  path="/details/:id" component={tileFormContainer}/>
                     </Switch>
                 </div>
 

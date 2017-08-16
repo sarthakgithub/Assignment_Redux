@@ -8,3 +8,6 @@ export function loadTiles(){
 	return{type: 'LOAD_TILES'}
 }
 
+export function editStateOfTiles(){
+	return {type : 'EDIT_STATE'}
+}

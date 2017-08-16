@@ -7,44 +7,17 @@ import {IndexRoute} from 'react-router';
 import { connect } from 'react-redux';
 import {getData} from '../dataapi/api.js';
 import _ from 'lodash';
+import TileList from './tileList.js';
 
 class Home extends React.Component{
 	constructor(props){
 		super(props);
-		// this.state = {
-		// 	searchTerm : '',
-		// 	shows:[]
-		// };
-		// this.handleSearchTermChange = this.handleSearchTermChange.bind(this);
-		// this.showAllTiles = this.showAllTiles.bind(this);
-		// this.handleClick = this.handleClick.bind(this);
 	}
-	// handleSearchTermChange(event){
-	// 	this.setState({
-	// 		searchTerm : event.target.value
-	// 	});
-	// }
-	// showAllTiles(event){
-	// 	this.setState({
-	// 		searchTerm : ''
-	// 	});
-	// }
-	// componentDidMount(){
-	// 	getData().then(shows => {
-	// 		this.setState({shows});
 
-	// 	},error => {
-	// 		console.log(error);
-	// 	});
-	// }
-		componentDidMount(){
-			this.props.loadTiles();
-		}
-	// handleClick(e){
-	// 	if(this.state.searchTerm === ''){
-	// 		e.preventDefault();
-	// 	}
-	// }
+	componentDidMount(){
+		this.props.loadTiles();
+	}
+
 	render(){
 		return(
 			<div>
@@ -53,10 +26,13 @@ class Home extends React.Component{
 					<div className="searchContainer">
 					<input type="text" placeholder="search by title" value={this.props.searchTerm}
 					onChange={this.props.handleSearchTermChange} className="search form-control"/>
-					
+
 					<Link to={`/search/${this.props.searchTerm}`} className="searchOk">
 					<input type="button" value="OK" className="btn btn-primary"/></Link>
-					<div> a </div>
+						{
+							_.map(this.props.shows, (show => <TileList key={show.id} show={show} />))
+
+						}
 					</div>
 
 				</div>
