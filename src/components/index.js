@@ -8,7 +8,6 @@ import '../css/module1.css';
 import App from './App.js';
 import TileList from './tileList.js';
 import Home from './home.js';
-//import Search from './search.js';
 import reducer from '../reducers/reducers.js';
 import rootSaga from '../sagas/saga.js';
 import createSagaMiddleware from 'redux-saga'

@@ -2,22 +2,26 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {BrowserRouter as Router, Route, Link, Switch, Redirect, browserHistory} from "react-router-dom";
 import TileForm from '../components/tileForm.js';
-import {setSearchTerm,loadTiles,editStateOfTiles} from '../actioncreators/actionCreators.js';
-import { getData, getVisibleTiles, updateData } from '../dataapi/api.js';
+import {setSearchTerm,loadTiles,editStateOfTiles,filteredTile,saveTileData} from '../actioncreators/actionCreators.js';
+import { getData, updateData} from '../dataapi/api.js';
 
 const mapStateToProps = state => ({
     searchTerm : state.searchTerm,
     shows: state.shows,
     editState: state.editState,
-    filteredTileData : state.filteredTile
+    filteredTileData : state.filteredTile,
+    isSuccess : state.isSuccess
 });
 
 const mapDispatchToProps = (dispatch) => ({
     handleEditState(){
         dispatch(editStateOfTiles())
     },
-    dispatchFilteredData(filteredTile) {
-        dispatch({type: 'FILTERED_TILE_DATA', filteredTile});
+    dispatchFilteredData(id){
+        dispatch(filteredTile(id))
+    },
+    saveTileData(id,updatedObject){
+        dispatch(saveTileData(id,updatedObject))
     }
 });
 
@@ -26,12 +30,12 @@ class tileFormContainer extends React.Component {
         super(props);
     }
     componentDidMount() {
-        const filteredTile = getVisibleTiles(this.props.shows,this.props.match.params.id)[0];
-        this.props.dispatchFilteredData(filteredTile);
+        this.props.dispatchFilteredData(this.props.match.params.id);
     }
     render() {
         return (
-            <TileForm filteredTileDataToComponent={this.props.filteredTileData}/>
+            <TileForm filteredTileDataToComponent={this.props.filteredTileData} handleEdit={this.props.handleEditState}
+                      editState={this.props.editState} saveAction={this.props.saveTileData} isSuccess={this.props.isSuccess}/>
         );
     }
 }

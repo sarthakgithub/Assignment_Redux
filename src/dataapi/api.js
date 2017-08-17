@@ -24,8 +24,19 @@ export const updateData = (id,updatedObject) => {
             'Content-Type': 'application/json'
         }
     }).then(response => response)
-    .then(response => response.json);
+    .then(response => response.json());
 
 };
 
-export const getVisibleTiles = (shows,param) =>shows.filter((show,index) => show.id.includes(param));
+export const getFilteredData = (id) => {
+    return new Promise(function (resolve, reject) {
+        fetch('http://localhost:3000/items/'+id).then(response => response.json()).then(res => {
+                let shows = res.data;
+                resolve(shows);
+            })
+            .catch(error => {
+                reject(error);
+            });
+
+    });
+};

@@ -1,34 +1,11 @@
  import React from 'react';
  import axios from 'axios';
- import { getData, getVisibleTiles, updateData } from '../dataapi/api.js';
+ import { getData, updateData } from '../dataapi/api.js';
  import PropTypes from 'prop-types';
 
  class TileForm extends React.Component {
      constructor(props) {
          super(props);
-         //this.onEditToggle = this.onEditToggle.bind(this);
-         //this.state = {
-         //    edit: false,
-         //    shows: [],
-         //    searchTerm: "",
-         //    filteredTile:''
-         //};
-     }
-     //onEditToggle() {
-     //    this.setState({
-     //        edit: !this.state.edit
-     //    });
-     //}
-
-     componentDidMount() {
-
-         //getData().then(shows => {
-         //    let filteredTile = getVisibleTiles(shows,this.props.match.params.id);
-         //    this.setState({ shows : shows, searchTerm: this.props.match.params.id,filteredTile:filteredTile[0]});
-         //}, error => {
-         //    console.log(error);
-         //});
-         //let filteredTile = getVisibleTiles(this.props.shows,this.props.match.params.id);
      }
 
      render() {
@@ -37,9 +14,10 @@
                  {
                  (this.props.editState ?
                      <div>
-                         <InfoEdit onEditToggle={this.props.handleEditState} tile={this.props.filteredTileDataToComponent} />
-                         <Info onEditToggle={this.props.handleEditState} tile={this.props.filteredTileDataToComponent} />
-                     </div> : <Info onEditToggle={this.props.handleEditState} tile={this.props.filteredTileDataToComponent} />)
+                         {
+                         <InfoEdit onEditToggle={this.props.handleEdit} tile={this.props.filteredTileDataToComponent} saveAction={this.props.saveAction}/>}
+                         <Info onEditToggle={this.props.handleEdit} tile={this.props.filteredTileDataToComponent} />
+                     </div> : <Info onEditToggle={this.props.handleEdit} tile={this.props.filteredTileDataToComponent} />)
                  }
              </div>
          );
@@ -73,55 +51,54 @@
      );
  };
 
- //class InfoEdit extends React.Component {
- //    constructor(props) {
- //        super(props);
- //        this.state ={
- //            tile:{},
- //            temp:{}
- //        };
- //        this.state.tile ={title:'',name:''};
- //        this.onChange = this.onChange.bind(this);
- //        this.saveData = this.saveData.bind(this);
- //    }
- //
- //    componentDidMount() {
- //        this.setState({ tile: this.props.tile });
- //    }
- //    onChange(e){
- //        this.state.temp = Object.assign({},this.state.tile);
- //        let key = e.target.name;
- //        this.state.temp[key] = e.target.value;
- //        this.setState({tile:this.state.temp});
- //    }
- //
- //    saveData(){
- //        updateData(this.state.tile.id,this.state.tile).then((response) => {
- //            window.location.reload();
- //        });
- //    }
- //    render() {
- //        return (
- //            <div>
- //
- //            <div className="form-parent">
- //                <form className="editable-form">
- //                    <div className="form-group">
- //                        <label className="col-sm-4">Image Title</label>
- //                        <input type="text" className="field form-control" name="title" value={this.state.tile.title} onChange= {this.onChange}/>
- //                    </div>
- //                    <div className="form-group">
- //                        <label className="col-sm-4">Image Name</label>
- //                        <input type="text" className="field form-control" name="name" value={this.state.tile.name} onChange= {this.onChange}/>
- //                    </div>
- //
- //                    <button type="button"  value="save" className="col-sm-2 btn btn-default" onClick={this.saveData}>SAVE</button>
- //                    <button type="button"  value="cancel" className="col-sm-2 btn btn-default" onClick={this.props.onEditToggle}> CANCEL </button>
- //                </form>
- //            </div>
- //            </div>
- //        );
- //    }
- //}
+ class InfoEdit extends React.Component {
+     constructor(props) {
+         super(props);
+         this.state ={
+             tile:{},
+             temp:{}
+         };
+         this.state.tile ={title:'',name:''};
+         this.onChange = this.onChange.bind(this);
+         //this.saveData = this.saveData.bind(this);
+         this.saveActionFunction = this.saveActionFunction.bind(this)
+     }
+
+     componentDidMount() {
+         this.setState({ tile: this.props.tile });
+     }
+     onChange(e){
+         this.state.temp = Object.assign({},this.state.tile);
+         let key = e.target.name;
+         this.state.temp[key] = e.target.value;
+         this.setState({tile:this.state.temp});
+     }
+
+     saveActionFunction(){
+         this.props.saveAction(this.state.tile.id,this.state.tile);
+     }
+     render() {
+         return (
+             <div>
+
+             <div className="form-parent">
+                 <form className="editable-form">
+                     <div className="form-group">
+                         <label className="col-sm-4">Image Title</label>
+                         <input type="text" className="field form-control" name="title" value={this.state.tile.title} onChange= {this.onChange}/>
+                     </div>
+                     <div className="form-group">
+                         <label className="col-sm-4">Image Name</label>
+                         <input type="text" className="field form-control" name="name" value={this.state.tile.name} onChange= {this.onChange}/>
+                     </div>
+
+                     <button type="button"  value="save" className="col-sm-2 btn btn-default" onClick={this.saveActionFunction}>SAVE</button>
+                     <button type="button"  value="cancel" className="col-sm-2 btn btn-default" onClick={this.props.onEditToggle}> CANCEL </button>
+                 </form>
+             </div>
+             </div>
+         );
+     }
+ }
 
  export default TileForm;

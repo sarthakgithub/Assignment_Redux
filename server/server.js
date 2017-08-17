@@ -5,6 +5,7 @@ var config = require('../webpack.dev.config');
 var fs = require("fs");
 var cors = require('cors');
 var bodyParser = require('body-parser');
+const HttpStatus = require('http-status-codes');
 
 const port = 3000;
 const app = express();
@@ -63,10 +64,29 @@ app.put('/items/:id',function(req,res){
             fs.writeFile('./server/json/data.json', json, 'utf8', function (err) {
                 if (err)
                     throw err;
-                res.send(json);
+                res.send(req.body);
             });
         }
 
     })
 });
 
+app.get('/items/:id', function (req, res) {
+    var id = req.params.id;
+    fs.readFile('./server/json/data.json', 'utf8', function (err, data) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            var jsonObject = JSON.parse(data);
+            var shows = jsonObject.shows;
+
+            var filteredArray = shows.filter(show => {
+                return show.id == id
+            });
+            json = (filteredArray[0]);
+            res.send({status:"success",data:json});
+        }
+    })
+
+});
