@@ -1,5 +1,4 @@
  import React from 'react';
- import axios from 'axios';
  import { getData, updateData } from '../dataapi/api.js';
  import PropTypes from 'prop-types';
 
@@ -7,7 +6,9 @@
      constructor(props) {
          super(props);
      }
-
+     componentDidMount() {
+        this.props.dispatchFilteredData(this.props.match.params.id);
+     }
      render() {
          return (
              <div>
@@ -15,9 +16,9 @@
                  (this.props.editState ?
                      <div>
                          {
-                         <InfoEdit onEditToggle={this.props.handleEdit} tile={this.props.filteredTileDataToComponent} saveAction={this.props.saveAction}/>}
-                         <Info onEditToggle={this.props.handleEdit} tile={this.props.filteredTileDataToComponent} />
-                     </div> : <Info onEditToggle={this.props.handleEdit} tile={this.props.filteredTileDataToComponent} />)
+                         <InfoEdit onEditToggle={this.props.handleEditState} tile={this.props.filteredTileData} saveAction={this.props.saveTileData}/>}
+                         <Info onEditToggle={this.props.handleEditState} tile={this.props.filteredTileData} />
+                     </div> : <Info onEditToggle={this.props.handleEditState} tile={this.props.filteredTileData} />)
                  }
              </div>
          );
@@ -60,13 +61,13 @@
          };
          this.state.tile ={title:'',name:''};
          this.onChange = this.onChange.bind(this);
-         //this.saveData = this.saveData.bind(this);
          this.saveActionFunction = this.saveActionFunction.bind(this)
      }
 
      componentDidMount() {
          this.setState({ tile: this.props.tile });
      }
+
      onChange(e){
          this.state.temp = Object.assign({},this.state.tile);
          let key = e.target.name;

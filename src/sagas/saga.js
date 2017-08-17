@@ -23,11 +23,8 @@ export function* watchFilteredTileSaga(){
 }
 
 export function* watchSaveTileData(action){
-
     const updatedJsonData = yield call(updateData,action.id,action.updatedObject);
     yield put ({type:'UPDATED_JSON_DATA',updatedJsonData});
-    //yield put({type: 'checkSuccess',success:true});
-    //window.location.reload();
 }
 
 export function* watchSaveTileSaga(){

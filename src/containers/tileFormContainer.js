@@ -25,19 +25,6 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-class tileFormContainer extends React.Component {
-    constructor(props){
-        super(props);
-    }
-    componentDidMount() {
-        this.props.dispatchFilteredData(this.props.match.params.id);
-    }
-    render() {
-        return (
-            <TileForm filteredTileDataToComponent={this.props.filteredTileData} handleEdit={this.props.handleEditState}
-                      editState={this.props.editState} saveAction={this.props.saveTileData} isSuccess={this.props.isSuccess}/>
-        );
-    }
-}
+const tileFormContainer = connect(mapStateToProps,mapDispatchToProps)(TileForm);
 
-export default connect(mapStateToProps, mapDispatchToProps)(tileFormContainer);
+export default tileFormContainer;
