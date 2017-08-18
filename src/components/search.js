@@ -4,7 +4,7 @@
  import {IndexRoute} from 'react-router';
  import TileList from './tileList.js';
 
- class Search extends  React.Component{
+ class Search extends  React.PureComponent{
      constructor(props){
          super(props);
      }

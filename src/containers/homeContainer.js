@@ -8,7 +8,7 @@ import {getData} from '../dataapi/api.js';
 const mapStateToProps = state => ({
 	searchTerm : state.searchTerm,
 	shows: state.shows
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
 	loadTiles(){
@@ -16,12 +16,12 @@ const mapDispatchToProps = (dispatch) => ({
 	},
 	handleSearchTermChange(event){
 		dispatch(setSearchTerm(event.target.value))
-},
-deleteSearchTerm(event){
-	dispatch(deleteSearchTerm(event.target.value));
-}
-})
+	},
+	deleteSearchTerm(event){
+		dispatch(deleteSearchTerm(event.target.value));
+	}
+});
 
-const HomeContainer = connect(mapStateToProps,mapDispatchToProps)(Home)
+const HomeContainer = connect(mapStateToProps,mapDispatchToProps)(Home);
 
 export default HomeContainer;

@@ -7,13 +7,20 @@ import {getData} from '../dataapi/api.js';
 import _ from 'lodash';
 import TileList from './tileList.js';
 
-class Home extends React.Component{
+class Home extends React.PureComponent{
 	constructor(props){
 		super(props);
+		this.handleClick = this.handleClick.bind(this);
 	}
 
 	componentDidMount(){
 		this.props.loadTiles();
+	}
+
+	handleClick(e){
+		if(this.props.searchTerm === ''){
+			e.preventDefault();
+		}
 	}
 
 	render(){
@@ -31,7 +38,7 @@ class Home extends React.Component{
 					}
 
 					<Link to={`/search/${this.props.searchTerm}`} className="searchOk">
-					<input type="button" value="OK" className="btn btn-primary"/></Link>
+					<input type="button" value="OK" className="btn btn-primary" onClick={this.handleClick}/></Link>
 						{
 							_.map(this.props.shows, (show => <TileList key={show.id} show={show} />))
 

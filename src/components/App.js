@@ -7,7 +7,7 @@ import HomeContainer from '../containers/homeContainer.js';
 import searchContainer from '../containers/searchContainer.js';
 import tileFormContainer from '../containers/tileFormContainer.js';
 
-class App extends React.Component{
+class App extends React.PureComponent{
     render(){
         return(
             <Router history={browserHistory}>

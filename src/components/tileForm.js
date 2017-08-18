@@ -2,7 +2,7 @@
  import { getData, updateData } from '../dataapi/api.js';
  import PropTypes from 'prop-types';
 
- class TileForm extends React.Component {
+ class TileForm extends React.PureComponent {
      constructor(props) {
          super(props);
      }
@@ -52,7 +52,7 @@
      );
  };
 
- class InfoEdit extends React.Component {
+ class InfoEdit extends React.PureComponent {
      constructor(props) {
          super(props);
          this.state ={

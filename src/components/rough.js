@@ -15,3 +15,16 @@ on landing page
 
 const mapStateToProps = state => ({ searchTerm : state.searchTerm})
 export default connect(mapStateToProps)(Landing);
+
+{
+	"plugins":[
+	"babel-plugin-transform-class-properties"
+],
+		"env" : {
+	"test": {
+		"plugins" : [
+			"transform-es2015-modules-commonjs"
+		]
+	}
+}
+}

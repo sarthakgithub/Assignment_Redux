@@ -3,7 +3,7 @@
  import {BrowserRouter as Router, Route, Link} from "react-router-dom";
  import {IndexRoute} from 'react-router';
 
- class TileList extends React.Component {
+ class TileList extends React.PureComponent {
  	constructor(props){
  		super(props);
  	}
