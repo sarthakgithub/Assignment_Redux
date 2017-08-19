@@ -3,10 +3,18 @@ import { connect } from 'react-redux';
 import {BrowserRouter as Router, Route, Link, Switch, Redirect, browserHistory} from "react-router-dom";
 import Search from '../components/search.js';
 import {setSearchTerm,loadTiles} from '../actioncreators/actionCreators.js';
+import {makeGetVisibleShows} from '../reselect/selector.js'
 
-const mapStateToProps = state => ({
-    shows: state.shows
-});
+const makeMapStateToProps = () => {
+    const getVisibleShowsState = makeGetVisibleShows();
+    const mapStateToProps = (state, props) => {
+        return {
+            shows: state.shows,
+            visibleShows :getVisibleShowsState(state,props)
+        }
+    };
+    return mapStateToProps
+};
 
 const mapDispatchToProps = (dispatch) => ({
     loadTiles(){
@@ -14,6 +22,7 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-const searchContainer = connect(mapStateToProps,mapDispatchToProps)(Search);
+const searchContainer = connect(makeMapStateToProps,mapDispatchToProps)(Search);
 
 export default searchContainer;
+

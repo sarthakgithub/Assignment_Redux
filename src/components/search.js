@@ -11,11 +11,12 @@
      componentDidMount(){
          this.props.loadTiles();
      }
+
      render(){
          return(
              <div className="searched">
                  {
-                     this.props.shows.filter(show => `${show.title.toLowerCase()}`.indexOf((this.props.match.params.id).toLowerCase()) >=0).map(show => <TileList key={show.id} show={show} />)
+                    this.props.visibleShows.map(show => <TileList key={show.id} show={show} />)
                  }
 
              </div>

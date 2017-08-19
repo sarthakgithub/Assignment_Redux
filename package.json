@@ -60,6 +60,7 @@
     "redux": "^3.7.2",
     "redux-promise": "^0.5.3",
     "redux-saga": "^0.15.6",
+    "reselect": "^3.0.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1",
