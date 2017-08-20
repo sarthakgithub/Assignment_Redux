@@ -85,16 +85,16 @@
              <div className="form-parent">
                  <form className="editable-form">
                      <div className="form-group">
-                         <label className="col-sm-4">Image Title</label>
+                         <label>Image Title</label>
                          <input type="text" className="field form-control" name="title" value={this.state.tile.title} onChange= {this.onChange}/>
                      </div>
                      <div className="form-group">
-                         <label className="col-sm-4">Image Name</label>
+                         <label>Image Name</label>
                          <input type="text" className="field form-control" name="name" value={this.state.tile.name} onChange= {this.onChange}/>
                      </div>
 
-                     <button type="button"  value="save" className="col-sm-2 btn btn-default" onClick={this.saveActionFunction}>SAVE</button>
-                     <button type="button"  value="cancel" className="col-sm-2 btn btn-default" onClick={this.props.onEditToggle}> CANCEL </button>
+                     <button type="button"  value="save" className="btn btn-default" onClick={this.saveActionFunction}>SAVE</button>
+                     <button type="button"  value="cancel" className="btn btn-default" onClick={this.props.onEditToggle}> CANCEL </button>
                  </form>
              </div>
              </div>
