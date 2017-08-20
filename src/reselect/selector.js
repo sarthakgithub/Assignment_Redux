@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 
 const getShows = (state,props) => state.shows;
-const getSearchTerm = (state,props) => props.match.params.id;
+export const getSearchTerm = (state,props) => props.match.params.id;
 
 export const makeGetVisibleShows = () => createSelector(
     [getShows, getSearchTerm],

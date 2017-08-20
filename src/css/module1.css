@@ -129,6 +129,10 @@ li a:hover {
     border-radius: 3px;
     margin-top: 10px;
 }
+.edit-heading{
+    text-align: center;
+    color: #009688
+}
 .divTable
 {
     display:  table;

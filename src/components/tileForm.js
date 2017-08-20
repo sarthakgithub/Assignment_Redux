@@ -84,6 +84,7 @@
 
              <div className="form-parent">
                  <form className="editable-form">
+                    <h3 className="edit-heading"> Edit Details</h3>
                      <div className="form-group">
                          <label>Image Title</label>
                          <input type="text" className="field form-control" name="title" value={this.state.tile.title} onChange= {this.onChange}/>
