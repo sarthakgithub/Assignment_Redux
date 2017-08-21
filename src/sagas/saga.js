@@ -31,6 +31,6 @@ export function* watchSaveTileSaga(){
     yield takeEvery(actionTypes.SAVE_TILE_DATA,watchSaveTileData);
 }
 
-export default function* rootSaga() {
+export function* rootSaga() {
     yield all([watchTilesSaga(),watchFilteredTileSaga(),watchSaveTileSaga()])
 }

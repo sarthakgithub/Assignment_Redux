@@ -9,7 +9,7 @@ import App from './App.js';
 import TileList from './tileList.js';
 import Home from './home.js';
 import reducer from '../reducers/reducers.js';
-import rootSaga from '../sagas/saga.js';
+import {rootSaga} from '../sagas/saga.js';
 import createSagaMiddleware from 'redux-saga'
 
 const sagaMiddleware = createSagaMiddleware();

@@ -28,3 +28,41 @@ export default connect(mapStateToProps)(Landing);
 	}
 }
 }
+
+------------------
+import { createStore, applyMiddleware } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import api from '.path/to/api/service';
+import saga from './path/to/sagas';
+
+function mockStore(rootSaga) {
+	const sagaMiddleware = createSagaMiddleware();
+	const actionReducer = (state, action) =>
+			action.type === '@@redux/INIT' ? [] : [...state, action];
+	const store = applyMiddleware(sagaMiddleware)(createStore)(actionReducer);
+	sagaMiddleware.run(rootSaga);
+	return store;
+}
+
+describe('suite', () => {
+	it('test', async () => {
+		const store = mockStore(saga);
+		api.someCall = jest.fn(() => 'some response');
+
+		store.dispatch({
+			type: 'SOME_ACTION',
+			id: 123
+		});
+
+		await Promise.resolve();
+
+		const actual = store.getState();
+		const expected = [
+			{ type: 'SOME_ACTION', id: 123 },
+			{ type: 'SOME_OTHER_ACTION', payload: 'some response' }
+		];
+
+		expect(actual).toEqual(expected);
+		expect(api.someCall).toHaveBeenCalledWith(123);
+	});
+});

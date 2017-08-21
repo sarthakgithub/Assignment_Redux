@@ -1,37 +1,31 @@
-// import React from 'react';
-// import * as types from '../src/actions/actions.js';
-// import * as actionCreator from '../src/actioncreators/actionCreators.js';
-// import sagaHelper from 'redux-saga-testing';
-// import { call, put } from 'redux-saga/effects';
-// import {getData} from '../src/dataapi/api.js';
+ import React from 'react';
+ import * as types from '../src/actions/actions.js';
+ import * as actionCreator from '../src/actioncreators/actionCreators.js';
+ import sagaHelper from 'redux-saga-testing';
+ import { call, put } from 'redux-saga/effects';
+ import {getData,getFilteredData,updateData} from '../src/dataapi/api.js';
+ import * as sagas from '../src/sagas/saga.js';
 
-// const api = getData();
-// function* watchTilesAsync(){
-//     const shows = yield call(getData);
-//     yield put({type: 'LOADED_TILES', shows});
-// }
+ describe('test', () => {
+     it('loading saga', () => {
+         const it = sagas.watchTilesAsync();
+         expect(it.next().value).toEqual(call(getData));
+         expect(it.next().value).toEqual(put({type: 'LOADED_TILES', undefined}));
+     })
+ });
 
-// describe('testing saga that manipulates data',() => {
-//     const it = sagaHelper(watchTilesAsync());
+ describe('test', () => {
+     it('filtered tile saga', () => {
+         const it = sagas.watchFilteredTile({'id':'12'});
+         expect(it.next().value).toEqual(call(getFilteredData,'12'));
+         expect(it.next().value).toEqual(put({type:'FILTERED_TILE_TO_REDUCER', undefined}));
+     })
+ });
 
-//     it('should call mock API to return some data',result => {
-//         expect(result).toEqual(call(api))
-
-//     })
-// });
-
-import React from 'react';
-import renderer from 'react-test-renderer';
-import * as types from '../src/actions/actions.js';
-import * as actionCreator from '../src/actioncreators/actionCreators.js';
-
-describe('actions', () => {
-    it('should create an action for searchTerm', () => {
-        const searchTermTest = '';
-        const expectedAction = {
-            type: types.SET_SEARCH_TERM,
-            payload : searchTermTest
-        };
-        expect(actionCreator.setSearchTerm(searchTermTest)).toEqual(expectedAction)
-    })
-});
+ describe('test', () => {
+     it('updated json saga', () => {
+         const it = sagas.watchSaveTileData({'id':'2','updatedObject':{}});
+         expect(it.next().value).toEqual(call(updateData,'2',{}));
+         expect(it.next().value).toEqual(put({type:'UPDATED_JSON_DATA',undefined}));
+     })
+ });
