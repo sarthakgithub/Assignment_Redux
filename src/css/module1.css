@@ -1,6 +1,5 @@
 body{
     background: lightgray;
-    //background: green;
 }
 .headingTitle{
     text-align: center;
@@ -51,7 +50,6 @@ li a:hover {
     font-weight: 500;
 }
 .search.form-control{
-    //margin: 10px 0 0 20px;
     width: 20%;
     margin: 0 auto;
 }
@@ -69,8 +67,6 @@ li a:hover {
 }
 .searchOk{
     display: block;
-    /*margin-top:5px;*/
-    /*margin-left: 20px;*/
     margin-left: 61%;
     margin-top: -32px;
 }

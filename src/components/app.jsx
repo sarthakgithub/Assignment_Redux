@@ -1,8 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import '../css/module1.css';
 import {BrowserRouter as Router, Route, Link, Switch, Redirect, browserHistory} from "react-router-dom";
-import {provider} from 'react-redux';
 import HomeContainer from '../containers/homeContainer.js';
 import searchContainer from '../containers/searchContainer.js';
 import tileFormContainer from '../containers/tileFormContainer.js';

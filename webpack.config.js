@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 module.exports = {
 	context: __dirname,
-	entry: ['babel-polyfill', './src/components/index.js'],
+	entry: ['babel-polyfill', './src/components/index.jsx'],
 
 	devtool: 'inline-source-map',
 	output: {
@@ -31,7 +31,7 @@ module.exports = {
 				exclude : /(node_modules)/
 			},
 			{
-				test : /\.js$/,
+				test : [/\.js?$/,/\.jsx?$/],
 				loader : 'babel-loader',
 				exclude : /(node_modules)/,
 				query : {

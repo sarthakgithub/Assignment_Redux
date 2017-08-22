@@ -1,28 +1,29 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import {BrowserRouter as Router, Route, Link, Switch, Redirect, browserHistory} from "react-router-dom";
-import Search from '../components/search.js';
-import {setSearchTerm,loadTiles} from '../actioncreators/actionCreators.js';
-import {makeGetVisibleShows} from '../reselect/selector.js'
+import Search from '../components/search.jsx';
+import {setSearchTerm, loadTiles} from '../actioncreators/actionCreators.js';
+import {makeGetVisibleShows} from '../reselect/selector.js';
 
 const makeMapStateToProps = () => {
     const getVisibleShowsState = makeGetVisibleShows();
     const mapStateToProps = (state, props) => {
         return {
             shows: state.shows,
-            visibleShows :getVisibleShowsState(state,props)
-        }
+            searchTerm : state.searchTerm,
+            visibleShows : getVisibleShowsState(state, props),
+        };
     };
-    return mapStateToProps
+    return mapStateToProps;
 };
 
 const mapDispatchToProps = (dispatch) => ({
     loadTiles(){
-        dispatch(loadTiles())
-    }
+        dispatch(loadTiles());
+    },
+    handleSearchTermChange(event){
+        dispatch(setSearchTerm(event.target.value));
+    },
 });
 
-const searchContainer = connect(makeMapStateToProps,mapDispatchToProps)(Search);
+const searchContainer = connect(makeMapStateToProps, mapDispatchToProps)(Search);
 
 export default searchContainer;
-
