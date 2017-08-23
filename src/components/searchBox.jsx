@@ -32,4 +32,10 @@ class SearchBox extends React.PureComponent{
     }
 }
 
+SearchBox.propTypes = {
+    searchTerm : PropTypes.string,
+    deleteSearchTerm : PropTypes.func,
+    handleSearchTermChange : PropTypes.func
+};
+
 export default SearchBox;

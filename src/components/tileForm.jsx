@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Info from './info.jsx';
 import InfoEdit from './infoEdit.jsx';
 
-
 class TileForm extends React.PureComponent {
     constructor(props) {
         super(props);
@@ -12,7 +11,6 @@ class TileForm extends React.PureComponent {
         this.props.dispatchFilteredData(this.props.match.params.id);
     }
     render() {
-        console.log('detail render');
         return (
             <div>
                 {

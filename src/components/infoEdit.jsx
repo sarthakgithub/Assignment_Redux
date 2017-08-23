@@ -11,7 +11,7 @@ class InfoEdit extends React.PureComponent {
         };
         this.state.tile ={title:'',name:''};
         this.onChange = this.onChange.bind(this);
-        this.saveActionFunction = this.saveActionFunction.bind(this)
+        this.saveActionFunction = this.saveActionFunction.bind(this);
     }
 
     componentDidMount() {

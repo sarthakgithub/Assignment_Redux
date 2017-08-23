@@ -8,16 +8,11 @@ import SearchBox from './searchBox.jsx';
 class Search extends  React.PureComponent{
     constructor(props){
         super(props);
-        this.handleClick = this.handleClick.bind(this);
     }
     componentDidMount(){
         this.props.loadTiles();
     }
-    handleClick(e){
-        if(this.props.searchTerm === ''){
-            e.preventDefault();
-        }
-    }
+
     render(){
         return this.props.visibleShows && (
             <div className="searched">
