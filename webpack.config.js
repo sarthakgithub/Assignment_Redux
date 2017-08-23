@@ -24,12 +24,7 @@ module.exports = {
 	],
 	module : {
 		rules : [
-			{
-				enforce : 'pre',
-				test : /\.js$/,
-				loader : 'eslint-loader',
-				exclude : /(node_modules)/
-			},
+
 			{
 				test : [/\.js?$/,/\.jsx?$/],
 				loader : 'babel-loader',
@@ -39,8 +34,8 @@ module.exports = {
                 }
 			},
 			{
-				test: /\.css$/,
-        		use: [ 'style-loader', 'css-loader' ]
+				test: [/\.css$/,/\.less$/],
+        		use: [ 'style-loader', 'css-loader', 'less-loader' ]
 			},
 			{
 	        	test: /\.(png|svg|jpg|gif)$/,

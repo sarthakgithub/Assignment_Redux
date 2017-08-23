@@ -3,25 +3,27 @@ import {render} from 'react-dom';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import TileList from './tileList.jsx';
 import PropTypes from 'prop-types';
+import SearchBox from './searchBox.jsx';
 
 class Search extends  React.PureComponent{
     constructor(props){
         super(props);
+        this.handleClick = this.handleClick.bind(this);
     }
     componentDidMount(){
         this.props.loadTiles();
     }
-
+    handleClick(e){
+        if(this.props.searchTerm === ''){
+            e.preventDefault();
+        }
+    }
     render(){
         return this.props.visibleShows && (
             <div className="searched">
-                <input type="text" placeholder="search by title" value={this.props.searchTerm}
-                       onChange={this.props.handleSearchTermChange} className="search form-control"/>
 
-                <Link to={`/search/${this.props.searchTerm}`} className="searchOk">
-                    <input type="button" value="OK" className="btn btn-primary"/>
-                </Link>
-
+                <SearchBox searchTerm={this.props.searchTerm} handleSearchTermChange={this.props.handleSearchTermChange}
+                           deleteSearchTerm={this.props.deleteSearchTerm} />
                 {
                      this.props.visibleShows.map(show => <TileList key={show.id} show={show} />)
                 }

@@ -12,6 +12,7 @@ class TileForm extends React.PureComponent {
         this.props.dispatchFilteredData(this.props.match.params.id);
     }
     render() {
+        console.log('detail render');
         return (
             <div>
                 {

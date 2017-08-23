@@ -6,4 +6,3 @@ export const makeGetVisibleShows = () => createSelector(
     [getShows, getSearchTerm],
     (shows, searchTerm) => shows.filter((show) => `${show.title.toLowerCase()}`.indexOf((searchTerm).toLowerCase()) >=0)
 );
-

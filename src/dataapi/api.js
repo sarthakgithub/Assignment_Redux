@@ -1,16 +1,10 @@
 export const getData = () => {
-    return new Promise(function(resolve, reject) {
-        fetch('http://localhost:3000/items')
-            .then((response) => response.json())
-            .then((res) => {
-                const shows = res.shows;
-                resolve(shows);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-
-    });
+    return fetch('http://localhost:3000/items/')
+        .then((response) => response.json())
+        .then((res) => {
+            const shows = res.shows;
+            return shows;
+    })
 };
 
 export const updateData = (id, updatedObject) => {
@@ -27,14 +21,8 @@ export const updateData = (id, updatedObject) => {
 };
 
 export const getFilteredData = (id) => {
-    return new Promise(function(resolve, reject) {
-        fetch('http://localhost:3000/items/'+id).then((response) => response.json()).then((res) => {
-                const shows = res.data;
-                resolve(shows);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-
-    });
+    return fetch('http://localhost:3000/items/'+id).then((response) => response.json()).then((res) => {
+        const shows = res.data;
+        return shows;
+    })
 };

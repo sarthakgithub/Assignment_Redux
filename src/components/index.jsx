@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import '../css/module1.css';
+import '../less/imageGallery.less';
 import App from './app.jsx';
 import reducer from '../reducers/reducers.js';
 import {rootSaga} from '../sagas/saga.js';
