@@ -8,4 +8,4 @@ module.exports = Merge(CommonConfig,{
             minimize: true
         })
     ]
-})
+});

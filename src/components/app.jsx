@@ -8,7 +8,7 @@ import tileFormContainer from '../containers/tileFormContainer.js';
 class App extends React.PureComponent{
     render(){
         return(
-            <Router history={browserHistory}>
+            <Router>
                 <div className="navBar">
                     <ul className="navBarTabLinks">
                         <li className="navLinks" ><Link to="/home">Home</Link></li>

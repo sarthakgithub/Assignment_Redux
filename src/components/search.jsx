@@ -13,15 +13,23 @@ class Search extends  React.PureComponent{
         this.props.loadTiles();
     }
 
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.searchTerm == '')
+            nextProps.history.push('/home');
+    }
+
     render(){
         return this.props.visibleShows && (
-            <div className="searched">
+            <div>
 
                 <SearchBox searchTerm={this.props.searchTerm} handleSearchTermChange={this.props.handleSearchTermChange}
                            deleteSearchTerm={this.props.deleteSearchTerm} />
                 {
-                     this.props.visibleShows.map(show => <TileList key={show.id} show={show} />)
+                    this.props.visibleShows.map(show => <TileList key={show.id} show={show} />)
                 }
+
+                {this.props.visibleShows.length ? '' : <div className="noSearch">No result found</div>}
+
             </div>
         );
     }

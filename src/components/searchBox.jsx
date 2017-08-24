@@ -1,6 +1,6 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Route, Link, Redirect} from "react-router-dom";
 import PropTypes from 'prop-types';
 
 class SearchBox extends React.PureComponent{
@@ -13,15 +13,16 @@ class SearchBox extends React.PureComponent{
             e.preventDefault();
         }
     }
+
     render(){
         return (
-            <div>
+            <div className="searched">
                 <input type="text" placeholder="Search by title" value={this.props.searchTerm}
                        onChange={this.props.handleSearchTermChange} className="search form-control"/>
 
                 { this.props.searchTerm ?
-                    <span onClick={this.props.deleteSearchTerm}
-                          className="glyphicon glyphicon-remove"></span> : ''
+                <Link to={`/home/`}><span onClick={this.props.deleteSearchTerm}
+                          className="glyphicon glyphicon-remove"></span></Link> : ''
                 }
 
                 <Link to={`/search/${this.props.searchTerm}`} className="searchOk">

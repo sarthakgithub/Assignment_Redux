@@ -8,7 +8,7 @@
     "build": "webpack-dev-server --open",
     "test": "jest",
     "test:watch": "npm test -- --watch",
-    "buildProd": "webpack-dev-server --config webpack.prod.config.js",
+    "buildProd": "webpack-dev-server --config webpack.prod.config.js --open",
     "startProd": "npm-run-all --parallel buildProd start2",
     "start2": "node server/server",
     "watch": "webpack --watch"
@@ -28,7 +28,6 @@
     "webpack-hot-middleware": "2.18.0"
   },
   "devDependencies": {
-    "axios": "^0.16.2",
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^20.0.3",
