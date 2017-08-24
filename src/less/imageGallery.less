@@ -34,20 +34,48 @@ li a:hover {
 }
 
 .tile{
-  height: 300px;
   width: 30%;
   display: inline-block;
   margin: 10px;
-  padding: 10px;
+  border: 1px solid black;
+  border-radius: 2px;
+  position: relative;
+  &:hover{
+    .imgTitle h3{
+      color: black;
+      background: #dabf80
+    }
+    .imgTile{
+      opacity: 0.6;
+    }
+    .details{
+      display: block;
+      z-index: 1;
+    }
+  }
 }
 .imgTile{
-  width: 90%;
+  width: 100%;
   display: inline-block;
-  height: 220px;
+  height: 252px;
+}
+.details{
+  display: none;
+  font-size: 20px;
+  font-weight: bolder;
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
 .imgTitle{
   color: #fff;
   font-weight: 500;
+  h3{
+    margin: 0;
+    padding: 5px;
+  }
 }
 .search.form-control{
   width: 20%;

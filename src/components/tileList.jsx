@@ -11,6 +11,7 @@ class TileList extends React.PureComponent {
         return this.props.show && (
             <Link to={`/details/${this.props.show.id}`}>
                 <div className="tile">
+                    <div className="details">Details</div>
                     <img className="imgTile" alt={this.props.show.title} src={this.props.show.imagePath} />
                     <div className="imgTitle">
                         <h3>{this.props.show.title}</h3>
