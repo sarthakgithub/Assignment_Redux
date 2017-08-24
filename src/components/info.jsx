@@ -21,6 +21,11 @@ const Info = ({ tile,onEditToggle }) => {
                 <div className="divCell">{tile.name}</div>
             </div>
 
+            <div className="divRow">
+                <div className="divCell">country :</div>
+                <div className="divCell">{tile.country}</div>
+            </div>
+
             <button className="edit btn btn-primary" type="button" onClick={onEditToggle}>Edit</button>
 
         </div>
