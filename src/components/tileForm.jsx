@@ -17,7 +17,7 @@ class TileForm extends React.PureComponent {
                     (this.props.editState ?
                     <div>
                         <InfoEdit onEditToggle={this.props.handleEditState} tile={this.props.filteredTileData} saveAction={this.props.saveTileData}/>
-                        <Info onEditToggle={this.props.handleEditState} tile={this.props.filteredTileData} />
+                        <Info onEditToggle={this.props.handleEditState} tile={this.props.filteredTileData}/>
                     </div> : <Info onEditToggle={this.props.handleEditState} tile={this.props.filteredTileData} />)
                 }
             </div>

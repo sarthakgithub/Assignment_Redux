@@ -13,11 +13,6 @@ class Search extends  React.PureComponent{
         this.props.loadTiles();
     }
 
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.searchTerm == '')
-            nextProps.history.push('/home');
-    }
-
     render(){
         return this.props.visibleShows && (
             <div>

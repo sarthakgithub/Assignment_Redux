@@ -16,6 +16,9 @@ const mapDispatchToProps = (dispatch) => ({
     deleteSearchTerm(event){
         dispatch(deleteSearchTerm(event.target.value));
     },
+    deleteSearchTermByValue(val){
+        dispatch(deleteSearchTerm(val));
+    },
 });
 
 const HomeContainer = connect(mapStateToProps, mapDispatchToProps)(Home);

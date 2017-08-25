@@ -53,6 +53,9 @@ li a:hover {
       z-index: 1;
     }
   }
+  @media (max-width: 1313px){
+    width: 90%;
+  }
 }
 .imgTile{
   width: 100%;
@@ -71,10 +74,10 @@ li a:hover {
 }
 .imgTitle{
   color: #fff;
-  font-weight: 500;
   h3{
     margin: 0;
     padding: 5px;
+    font-weight: bold;
   }
 }
 .search.form-control{
@@ -147,6 +150,7 @@ li a:hover {
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
 }
 .editField{
   padding:10px;
@@ -168,25 +172,26 @@ li a:hover {
   text-align: center;
   color: #009688
 }
-.divTable
-{
+.divTable{
   display:  table;
-  width:auto;
+  width:50%;
   background-color:#eee;
   border:1px solid  #666666;
   border-spacing:5px;
 }
 
-.divRow
-{
+.divRow{
   display:table-row;
   width:auto;
 }
 
-.divCell
-{
+.divCell{
   float:left;
   display:table-column;
   width:200px;
-  background-color:#ccc;
+  border-bottom:1px solid #333;
+}
+
+.detailBlock{
+  display: inline-block;
 }

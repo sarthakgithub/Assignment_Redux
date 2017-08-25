@@ -7,7 +7,8 @@ class InfoEdit extends React.PureComponent {
         super(props);
         this.state ={
             tile:{},
-            temp:{}
+            temp:{},
+            hasValidation : false,
         };
         this.state.tile ={title:'',name:'',country:''};
         this.onChange = this.onChange.bind(this);
@@ -23,6 +24,12 @@ class InfoEdit extends React.PureComponent {
         let key = e.target.name;
         this.state.temp[key] = e.target.value;
         this.setState({tile:this.state.temp});
+        if(this.state.temp.title == '' || this.state.temp.name == '' || this.state.temp.country == ''){
+            this.setState({hasValidation : true})
+        }
+        else{
+            this.setState({hasValidation : false})
+        }
     }
 
     saveActionFunction(){
@@ -47,7 +54,7 @@ class InfoEdit extends React.PureComponent {
                             <label>Country</label>
                             <input type="text" className="field form-control" name="country" value={this.state.tile.country} onChange= {this.onChange}/>
                         </div>
-                        <button type="button"  value="save" className="btn btn-default" onClick={this.saveActionFunction}>SAVE</button>
+                        <button type="button"  value="save" className="btn btn-default" onClick={this.saveActionFunction} disabled={this.state.hasValidation}>SAVE</button>
                         <button type="button"  value="cancel" className="btn btn-default" onClick={this.props.onEditToggle}> CANCEL </button>
                     </form>
                 </div>

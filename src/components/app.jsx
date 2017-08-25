@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Link, Switch, Redirect, browserHistory} 
 import HomeContainer from '../containers/homeContainer.js';
 import searchContainer from '../containers/searchContainer.js';
 import tileFormContainer from '../containers/tileFormContainer.js';
+import NotFound from './notFound.jsx';
 
 class App extends React.PureComponent{
     render(){
@@ -19,6 +20,8 @@ class App extends React.PureComponent{
                         <Route  path="/home" component={HomeContainer}/>
                         <Route  path="/search/:id" component={searchContainer}/>
                         <Route  path="/details/:id" component={tileFormContainer}/>
+                        <Route path="/404" component={NotFound} />
+                        <Redirect from="*" to="/404" />
                     </Switch>
                 </div>
 

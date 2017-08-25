@@ -1,5 +1,5 @@
 import { call, put, takeEvery, all } from 'redux-saga/effects';
-import * as actionTypes from '../actions/actions';
+import * as actionTypes from '../constants/constants';
 import { getData, getFilteredData, updateData } from '../dataapi/api';
 
 export function* watchTilesAsync() {

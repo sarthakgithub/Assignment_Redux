@@ -9,10 +9,14 @@ import SearchBox from './searchBox.jsx';
 class Home extends React.PureComponent{
     constructor(props){
         super(props);
+        this.state= {
+            searchTermValue : ''
+        }
     }
 
     componentDidMount(){
         this.props.loadTiles();
+        this.props.deleteSearchTermByValue(this.state.searchTermValue);
     }
 
     render(){

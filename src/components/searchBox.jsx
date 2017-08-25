@@ -21,8 +21,8 @@ class SearchBox extends React.PureComponent{
                        onChange={this.props.handleSearchTermChange} className="search form-control"/>
 
                 { this.props.searchTerm ?
-                <Link to={`/home/`}><span onClick={this.props.deleteSearchTerm}
-                          className="glyphicon glyphicon-remove"></span></Link> : ''
+                <span onClick={this.props.deleteSearchTerm}
+                          className="glyphicon glyphicon-remove"></span> : ''
                 }
 
                 <Link to={`/search/${this.props.searchTerm}`} className="searchOk">

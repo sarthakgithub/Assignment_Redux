@@ -2,6 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import PropTypes from 'prop-types';
+import {URL} from '../constants/constants.js';
 
 class TileList extends React.PureComponent {
     constructor(props){
@@ -12,7 +13,7 @@ class TileList extends React.PureComponent {
             <Link to={`/details/${this.props.show.id}`}>
                 <div className="tile">
                     <div className="details">Details</div>
-                    <img className="imgTile" alt={this.props.show.title} src={this.props.show.imagePath} />
+                    <img className="imgTile" alt={this.props.show.title} src={`${URL}${this.props.show.imagePath}`} />
                     <div className="imgTitle">
                         <h3>{this.props.show.title}</h3>
                     </div>

@@ -1,5 +1,7 @@
+import {URL} from '../constants/constants.js';
+
 export const getData = () => {
-    return fetch('http://localhost:3000/items/')
+    return fetch(URL + '/items/')
         .then((response) => response.json())
         .then((res) => {
             const shows = res.shows;
@@ -8,7 +10,7 @@ export const getData = () => {
 };
 
 export const updateData = (id, updatedObject) => {
-    return fetch('http://localhost:3000/items/'+id, {
+    return fetch(URL + '/items/'+id, {
         method: 'put',
         body: JSON.stringify(updatedObject),
         headers: {
@@ -21,7 +23,7 @@ export const updateData = (id, updatedObject) => {
 };
 
 export const getFilteredData = (id) => {
-    return fetch('http://localhost:3000/items/'+id).then((response) => response.json()).then((res) => {
+    return fetch(URL + '/items/'+id).then((response) => response.json()).then((res) => {
         const shows = res.data;
         return shows;
     })
