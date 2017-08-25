@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import * as types from '../src/actions/actions.js';
+import * as types from '../src/constants/constants.js';
 import * as actionCreator from '../src/actioncreators/actionCreators.js';
 import reducer from '../src/reducers/reducers.js';
 

@@ -24,7 +24,10 @@ class InfoEdit extends React.PureComponent {
         let key = e.target.name;
         this.state.temp[key] = e.target.value;
         this.setState({tile:this.state.temp});
-        if(this.state.temp.title == '' || this.state.temp.name == '' || this.state.temp.country == ''){
+        if((this.state.temp.title == '' || this.state.temp.name == '' || this.state.temp.country == '')
+            || (this.state.temp.title == 'null' || this.state.temp.name == 'null' || this.state.temp.country == 'null')
+            || (this.state.temp.title == 'undefined' || this.state.temp.name == 'undefined' || this.state.temp.country == 'undefined'))
+        {
             this.setState({hasValidation : true})
         }
         else{

@@ -1,5 +1,5 @@
  import React from 'react';
- import * as types from '../src/actions/actions.js';
+ import * as types from '../src/constants/constants.js';
  import * as actionCreator from '../src/actioncreators/actionCreators.js';
  import sagaHelper from 'redux-saga-testing';
  import { call, put } from 'redux-saga/effects';
